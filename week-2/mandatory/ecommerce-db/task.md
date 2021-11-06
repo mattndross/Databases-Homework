@@ -61,6 +61,14 @@ join order_items oi on oi.product_id = p.id
 join orders o on oi.order_id = o.id 
 join customers c on o.customer_id = c.id;
 
+--Retrieve the names of all customers who bought a product from a supplier from China.
+select c.name, s.country from customers c 
+join orders o on c.id = o.customer_id 
+join order_items oi on oi.order_id = o.id 
+join products p on p.id = oi.product_id 
+join suppliers s on s.id = p.supplier_id 
+where s.country = 'China';
+
 ```
 
 When you have finished all of the questions - open a pull request with your answers to the `Databases-Homework` repository.
